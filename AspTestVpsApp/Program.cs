@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace AspTestVpsApp
                         o.Listen(IPAddress.Any, 80);
                         o.Listen(IPAddress.Any, 443, listenOptions =>
                         {
-                            listenOptions.UseHttps("key.pem");
+                            listenOptions.UseHttps(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "key.pem"));
                         });
                     });
                 });
