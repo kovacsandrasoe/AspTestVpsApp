@@ -31,7 +31,7 @@ namespace AspTestVpsApp
                         {
                             listenOptions.UseHttps(
                                 Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "cert.pfx"), "astalavista");
-                            
+
                         });
                     });
                 });

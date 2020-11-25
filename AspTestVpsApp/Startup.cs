@@ -28,9 +28,12 @@ namespace AspTestVpsApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            {
+                //options.UseSqlServer(
+                    //Configuration.GetConnectionString("DefaultConnection"));
+                options.UseMySql("Server=localhost;Database=asp;Uid=root;Pwd=astalavista;");
+            });
+        services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -58,7 +61,7 @@ namespace AspTestVpsApp
             app.UseAuthentication();
             app.UseAuthorization();
 
-            
+
 
             app.UseEndpoints(endpoints =>
             {
