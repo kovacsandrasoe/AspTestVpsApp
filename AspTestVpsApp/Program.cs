@@ -26,10 +26,9 @@ namespace AspTestVpsApp
                         o.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(5);
                         o.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(5);
                         o.Listen(IPAddress.Any, 80);
-                        //o.Listen(IPAddress.Any, 443);
                         o.Listen(IPAddress.Any, 443, listenOptions =>
                         {
-                            listenOptions.UseHttps();
+                            listenOptions.UseHttps("key.pem");
                         });
                     });
                 });
