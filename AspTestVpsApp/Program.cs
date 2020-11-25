@@ -29,7 +29,9 @@ namespace AspTestVpsApp
                         o.Listen(IPAddress.Any, 80);
                         o.Listen(IPAddress.Any, 443, listenOptions =>
                         {
-                            listenOptions.UseHttps(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "key.pem"));
+                            listenOptions.UseHttps(
+                                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "cert.pfx"), "astalavista");
+                            
                         });
                     });
                 });
