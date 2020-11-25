@@ -12,6 +12,7 @@ using AspTestVpsApp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace AspTestVpsApp
 {
@@ -31,7 +32,10 @@ namespace AspTestVpsApp
             {
                 //options.UseSqlServer(
                     //Configuration.GetConnectionString("DefaultConnection"));
-                options.UseMySql("Server=localhost;Database=asp;Uid=root;Pwd=astalavista;");
+                options.UseMySql("Server=localhost;Database=asp;Uid=root;Pwd=astalavista;", mysqlOptions =>
+                {
+                    mysqlOptions.ServerVersion(new Version(8, 0, 22), ServerType.MySql);
+                });
             });
         services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
