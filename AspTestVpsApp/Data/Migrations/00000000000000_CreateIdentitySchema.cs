@@ -138,8 +138,8 @@ namespace AspTestVpsApp.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(maxLength: 256, nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 256, maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 256, maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 256, nullable: false),
+                    Name = table.Column<string>(maxLength: 256, nullable: false),
                     Value = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>
